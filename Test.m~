@@ -4,9 +4,9 @@ function [answers, output] = Test(net, tests, thresholdH, thresholdD,thresholdA)
     answers = zeros(1,nrTests);
     for i = 1:nrTests
         if output(3,i) > thresholdA
-            answers(i) = 3;
+            answers(i) = 'A';
         elseif output (1,i) > thresholdH
-            answers(i) = 1;
+            answers(i) = 'H';
         else
             answers(i) = 2;
         end

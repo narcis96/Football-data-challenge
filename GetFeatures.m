@@ -2,8 +2,8 @@ function [ match ] = GetFeatures(homeTeam, awayTeam, teams, homeMatches, awayMat
     team1 = GetTeamIndex(homeTeam, teams);
     team2 = GetTeamIndex(awayTeam, teams);
         
-    assert(1<= team1 && team1 <= size(teams,1));
-    assert(1<= team2 && team2 <= size(teams,1));
+    assert(1<= team1 && team1 <= size(teams,2));
+    assert(1<= team2 && team2 <= size(teams,2));
         
     team1matches = homeMatches(team1) + awayMatches(team1);
     team2matches = homeMatches(team2) + awayMatches(team2);
@@ -49,14 +49,18 @@ function [ match ] = GetFeatures(homeTeam, awayTeam, teams, homeMatches, awayMat
     
         
     match = [];
-    match = [team1 team2];
+    arrayteams = zeros(size(teams));
+    arrayteams(team1) = 1;
+    arrayteams(team2) = 2;
+    match = [match arrayteams];
+    %match = [team1 team2];
     match = [match team1points team2points team1winnings team2winnings];
     match = [match team1ties team2ties team1losses team2losses];
     match = [match team1home team2home];
     match = [match team1away team2away];
     match = [match first5_1 first5_2];
     match = [match last5_1 last5_2];
-    match = [match team1matches team2matches];
-    match = [match team1Place(1) team2Place(1)];
+    %match = [match team1matches team2matches];
+    %match = [match team1Place(1) team2Place(1)];
 end
 

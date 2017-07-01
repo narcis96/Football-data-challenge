@@ -3,7 +3,7 @@ testFile        = './testSet/test.csv';
 outputFile      = 'submission.csv';
 ratioFile      = 'ratio_win.csv';
 averageTeamsFile =  'average_teams.csv';
-networkConfidence = 4/10;
+networkConfidence = 5/10;
 %read
 
 ratio = csvread(ratioFile, 1, 1);
@@ -85,7 +85,7 @@ disp(size(trainData));
 
 
 percentage = 25/100;
-sigma = 0.2;
+sigma = 0.3;
 minValue = min(min(trainData));
 maxValue = max(max(trainData));
 [newTrainVectors, newTrainLabels] = DistrurbRandomSamples(trainData, trainLabels, percentage, sigma, minValue, maxValue);
@@ -99,13 +99,13 @@ minPerceptrons = 20;
 maxPerceptrons = 40;
 minLayers = 1;
 maxLayers = 2;
-arhitecture = [30 15];
+arhitecture = [30 25];
 trainfcs = 'trainlm';
 %performFcn = 'crossentropy';
 performFcn = 'mse';
 
 %[arhitecture,performance,thresholds] = ChoseBest(trainData, trainLabels, arhitectures, minPerceptrons, maxPerceptrons, minLayers, maxLayers,indexes, trainfcs, performFcn);
-%perf = 1;
+perf = 1;
 %while perf > 0.180
   % [net,perf] = Train(trainData, trainLabels, arhitecture, trainfcs, performFcn);
  %   disp(sprintf('perf = %f ',perf));
@@ -183,10 +183,8 @@ csvwrite(outputFile,final);
 csvwrite(strcat('./tests/',outputFile),final);
 partition = [numel(find(answers==1)) numel(find(answers==2)) numel(find(answers==3))];
 partition1 = [numel(find(answers1==1)) numel(find(answers1==2)) numel(find(answers1==3))];
-%disp(output);
-disp(sprintf('thresholds =  '));
+disp(output);
 disp(thresholds);
-disp(sprintf('count =  '));
 disp(count);
 disp(sprintf('perf = %f ',perf));
 disp(sprintf('networkConfidence = %f ',networkConfidence));

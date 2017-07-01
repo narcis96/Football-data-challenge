@@ -1,11 +1,10 @@
-function [performace, thresholds] = KFoldCrossValidation(trainVectors, trainLabels, hiddenLayers,indexes)
+function [performace, thresholds] = KFoldCrossValidation(trainVectors, trainLabels, hiddenLayers,indexes, func, trainfcs)
     performaces = [];
     best = 1;
     thresholds = zeros(1,3);
     sz = size(trainVectors);
     total = sz(end);
-    func = {'tansig','logsig','tansig', 'logsig'};
-    trainfcs = 'trainlm';
+
 
     for column = indexes
         
@@ -24,8 +23,8 @@ function [performace, thresholds] = KFoldCrossValidation(trainVectors, trainLabe
         disp(sprintf('train size = %d ',size(currentTrainVectors,2)));
         disp(sprintf('test size = %d ',size(currentTestLabels,2)));
         perf = 1;
-        while perf > 0.20
-            [currentNet, perf] = Train1(currentTrainVectors, currentTrainLabels, hiddenLayers,func, trainfcs);  
+        while perf > 0.69
+            [currentNet, perf] = Train(currentTrainVectors, currentTrainLabels, hiddenLayers,func, trainfcs);  
         end
         [currentPerformance,currentThresholds] = ChoseBestThresholds(currentNet, currentTestVectors, currentTestLabels);
         %currentPerformance = mean(mean(abs(currentTestLabels-result)));

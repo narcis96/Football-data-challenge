@@ -1,5 +1,7 @@
-function [net, perf] = Train(trainVectors, trainLabels, hiddenLayers)
-    net = patternnet(hiddenLayers);
+function [net, perf] = Train(trainVectors, trainLabels, hiddenLayers, trainFcn, performFcn)
+    %default value trainFcn = 'trainscg';
+    %default value performFcn = 'crossentropy';
+    net = patternnet(hiddenLayers,trainFcn,performFcn);
 
     % Set up Division of Data for Training, Validation, Testing
     net.divideFcn = 'dividerand';

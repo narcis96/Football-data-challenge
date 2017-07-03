@@ -1,6 +1,5 @@
-function [answers, output] = Test(net, tests, thresholdH, thresholdD,thresholdA)
-    output = sim(net,tests);
-    nrTests = size(tests,2);
+function [answers] = GetAnswer(output, thresholdH, thresholdD,thresholdA)
+    nrTests = size(output,2);
     answers = zeros(1,nrTests);
     for i = 1:nrTests
         if output(3,i) > thresholdA
@@ -11,6 +10,5 @@ function [answers, output] = Test(net, tests, thresholdH, thresholdD,thresholdA)
             answers(i) = 2;
         end
     end
-
 end
 

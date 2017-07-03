@@ -23,8 +23,8 @@ function [performace, thresholds] = KFoldCrossValidation(trainVectors, trainLabe
         disp(sprintf('train size = %d ',size(currentTrainVectors,2)));
         disp(sprintf('test size = %d ',size(currentTestLabels,2)));
         perf = 1;
-        while perf > 0.69
-            [currentNet, perf] = Train(currentTrainVectors, currentTrainLabels, hiddenLayers,func, trainfcs);  
+        while perf > 0.2
+            [currentNet, perf] = Train(currentTrainVectors, currentTrainLabels, hiddenLayers, func, trainfcs);  
         end
         [currentPerformance,currentThresholds] = ChoseBestThresholds(currentNet, currentTestVectors, currentTestLabels);
         %currentPerformance = mean(mean(abs(currentTestLabels-result)));

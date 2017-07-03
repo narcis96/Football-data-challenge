@@ -54,12 +54,12 @@ function [ match ] = GetFeatures(homeTeam, awayTeam, teams, homeMatches, awayMat
     arrayteams(team2) = 2;
     match = [match arrayteams];
     %match = [team1 team2];
-    match = [match team1points team2points team1winnings team2winnings];
-    match = [match team1ties team2ties team1losses team2losses];
+    %match = [match team1points team2points team1winnings team2winnings];
+    %match = [match team1ties team2ties team1losses team2losses];
     match = [match team1home team2home];
     match = [match team1away team2away];
-    match = [match first5_1 first5_2];
-    match = [match last5_1 last5_2];
+    %match = [match first5_1 first5_2];
+    %match = [match last5_1 last5_2];
     %match = [match team1matches team2matches];
     %match = [match team1Place(1) team2Place(1)];
 end

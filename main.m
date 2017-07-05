@@ -2,12 +2,12 @@ trainFile       = './trainSet/train.csv';
 testFile        = './testSet/test.csv';
 outputFile      = 'submission.csv';
 outputFile1      = 'submission1.csv';
-ratioFile      = 'ratio_win.csv';
-averageTeamsFile =  'average_teams.csv';
+ratioFile      = 'statistics/ratio_win.csv';
+averageTeamsFile =  'statistics/average_teams.csv';
 averageOddsFile = 'AverageOdds.csv';
 
-distrurbSamples = true;
-percentage = 50/100;
+distrurbSamples = false;
+percentage = 20/100;
 sigma = 0.5;
 
 findArhitecture = false;
@@ -27,7 +27,7 @@ networkPercentage(2) = 50/100;
 assert(sum(networkPercentage) <= 1);
 
 useCurstomThresholds = true;
-curstomThresholds = [0.5062 0.3853 0.2923];%0.3476    0.3432    0.3239
+curstomThresholds = [0.4095 0.3268 0.3409];%0.4095    0.3268    0.3118 [0.3415    0.3408    0.3079]
 distribution = [0.50;0.25;0.25];
 
 ReadData;

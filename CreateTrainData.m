@@ -1,8 +1,13 @@
 trainData = [];
 trainLabels = [];
 indexes = [];
-for year = uniqueYears
-    yearMatches = find(dates(:,1) == year)';
+for i = 1:size(uniqueYears,2) - 1
+    
+    year = uniqueYears(i);
+    nextYear = uniqueYears(i+1);
+    
+    yearMatches = find(dates(:,1) == year & dates(:,2) <= 6)';
+    yearMatches = [yearMatches find(dates(:,1) == nextYear & dates(:,2) >= 8)'];
     
     score = zeros(1,countTeams);
     winnings = zeros(1,countTeams);
@@ -20,19 +25,19 @@ for year = uniqueYears
        trainData = [trainData match'];
        winner = -1;
        loser = -1;
-        if winners(i) == 'H'
+       if winners(i) == 'H'
             winner = 1;
             loser = 2;
             trainLabels = [trainLabels [1 0 0]'];
-        elseif winners(i) == 'A'
+       elseif winners(i) == 'A'
             winner = 2;
             loser = 1;
             trainLabels = [trainLabels [0 0 1]'];
-        else
+       else
             trainLabels = [trainLabels [0 1 0]'];
-        end
+       end
             
-        if(winner > 0)
+       if(winner > 0)
             winner = GetTeamIndex(matches(i, winner), teams);
             loser = GetTeamIndex(matches(i,loser), teams);
             
@@ -40,7 +45,7 @@ for year = uniqueYears
             winnings(winner) = winnings(winner) + 1;
             losses(loser) = losses(loser) + 1;
 
-        else
+       else
             ties(team1) = ties(team1) + 1;
             ties(team2) = ties(team2) + 1;
 

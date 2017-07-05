@@ -4,7 +4,7 @@ function [performance,thresholds ] = ChoseBestThresholds(net, testVectors, testL
     testIndx = vec2ind(testLabels);
     
     best = 1;
-    for i=1:500
+    for i=1:5000
         currentThresholds = sort(rand(1,3),'descend');
         output = sim(net,testVectors);
         result = GetAnswer(output, currentThresholds(1), currentThresholds(2), currentThresholds(3));

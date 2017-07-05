@@ -8,6 +8,9 @@ disp(sprintf('partition(3 1 2) =  '));
 disp(partition);
 disp(sprintf('partition1(1 3 2) =  '));
 disp(partition1);
+disp(sprintf('partitionTest =  '));
+disp(partitionTest);
+
 disp(sprintf('output(604) =  %f', output(:,604)));
 disp(sprintf('answers(604) =  %d', answers(604)));
 disp(sprintf('answers1(604) =  %d', answers1(604)));

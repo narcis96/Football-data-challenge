@@ -1,6 +1,6 @@
 setwd("/Users/gemenenarcis/Documents/MATLAB/Football-data-challenge/")
-#train = read.csv("./trainSet/train.csv",header = TRUE,sep=",")
-test = read.csv("./testSet/test.csv",header = TRUE,sep=",")
+#train = read.csv(“../trainSet/train.csv",header = TRUE,sep=",")
+test = read.csv(“../testSet/test.csv",header = TRUE,sep=",")
 for(i in 1:length(test$HomeTeam))
 {
     values = numeric(3)
